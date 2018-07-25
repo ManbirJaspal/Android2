@@ -5,6 +5,8 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -36,6 +38,17 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: done");
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) { // Its called when its time to inflate the activities menu
+        getMenuInflater().inflate(R.menu.feeds_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
     private class DownloadData extends AsyncTask<String, Void, String> { //Used for multi threading.
         private static final String TAG = "DownloadData";
 
@@ -43,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            Log.d(TAG, "onPostExecute: parameter is " + s);
+//            Log.d(TAG, "onPostExecute: parameter is " + s);
             ParseApplications parseApplications = new ParseApplications();
             parseApplications.parse(s); //s is the XML that the android has sent after downloading it on the doInBackground method.
 

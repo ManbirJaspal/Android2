@@ -36,7 +36,7 @@ public class ParseApplications {
                 String tagName = xpp.getName(); //Checking to see inside which tag is it. or the getName() method return null if the parser isnt insidse a tag;
                 switch (eventType) {
                     case XmlPullParser.START_TAG: //to check if the parser is at the start of a tag.
-                        Log.d(TAG, "parse:  Starting tag for: " + tagName);
+//                        Log.d(TAG, "parse:  Starting tag for: " + tagName);
                         if ("entry".equalsIgnoreCase(tagName)) { //checking if we are inside the entry tag.
                             inEntry = true;
                             currentRecord = new FeedEntry();
@@ -48,7 +48,7 @@ public class ParseApplications {
                         break;
 
                     case XmlPullParser.END_TAG:
-                        Log.d(TAG, "parse: Ending Tag for: " + tagName);
+//                        Log.d(TAG, "parse: Ending Tag for: " + tagName);
                         if (inEntry) {
                             if ("entry".equalsIgnoreCase(tagName)) {
                                 applications.add(currentRecord);
@@ -73,8 +73,8 @@ public class ParseApplications {
                 eventType = xpp.next();
             }
             for (FeedEntry app: applications) {
-                Log.d(TAG, "**************************");
-                Log.d(TAG, app.toString());
+//                Log.d(TAG, "**************************");
+//                Log.d(TAG, app.toString());
             }
         } catch (Exception e) {
             status = false;
