@@ -5,6 +5,8 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -19,11 +21,13 @@ import java.nio.Buffer;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
+    private ListView listApps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        listApps = findViewById(R.id.xmlListView);
 
         Log.d(TAG, "onCreate: starting Async TAsk");
         DownloadData downloadData = new DownloadData();
@@ -39,7 +43,12 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             Log.d(TAG, "onPostExecute: parameter is " + s);
-        }
+            ParseApplications parseApplications = new ParseApplications();
+            parseApplications.parse(s); //s is the XML that the android has sent after downloading it on the doInBackground method.
+
+            ArrayAdapter<FeedEntry> arrayAdapter = new ArrayAdapter<FeedEntry>(MainActivity.this, R.layout.list_item, parseApplications.getApplications());
+            listApps.setAdapter(arrayAdapter); //linking list view to the addapter. telling it form to get all the data.
+         }
 
         @Override
         protected String doInBackground(String... strings) {
