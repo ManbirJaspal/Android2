@@ -30,9 +30,9 @@ public class ParseApplications {
             XmlPullParserFactory factory = XmlPullParserFactory.newInstance(); //These lines of code make sense of the XML code for us.
             factory.setNamespaceAware(true);
             XmlPullParser xpp = factory.newPullParser();
-            xpp.setInput(new StringReader(xmlData)); //String Red
-            int eventType = xpp.getEventType();
-            while(eventType != XmlPullParser.END_DOCUMENT) { //To check if we are at the ned of the document.
+            xpp.setInput(new StringReader(xmlData)); //String reader creates a stream of strings.
+            int eventType = xpp.getEventType(); //to check the current event.
+            while(eventType != XmlPullParser.END_DOCUMENT) { //To check if we are at the end of the document.
                 String tagName = xpp.getName(); //Checking to see inside which tag is it. or the getName() method return null if the parser isnt insidse a tag;
                 switch (eventType) {
                     case XmlPullParser.START_TAG: //to check if the parser is at the start of a tag.
