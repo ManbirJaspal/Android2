@@ -2,28 +2,26 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.timbuchalka.youtubeplayer.MainActivity">
+    android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/btnPlaySingle"
+        android:id="@+id/btnPlayVideo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="play a single video"
+        android:text="Play Video"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnStandAlone"
+        android:id="@+id/btnPlayList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="StandAlone SubMenu"
-        app:layout_constraintStart_toStartOf="@+id/btnPlaySingle"
-        app:layout_constraintTop_toBottomOf="@+id/btnPlaySingle" />
+        android:text="Play PlayList"
+        app:layout_constraintTop_toBottomOf="@+id/btnPlayVideo"
+        tools:layout_editor_absoluteX="16dp" />
 </android.support.constraint.ConstraintLayout>
